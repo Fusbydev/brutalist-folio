@@ -1,98 +1,72 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ZineLayout, PageHeader } from "@/components/zine/Layout";
+import { members, TBD } from "@/data/members";
 
 export const Route = createFileRoute("/project")({
   component: ProjectPage,
   head: () => ({
     meta: [
       { title: "03 / Project Background — OJT E-Portfolio" },
-      { name: "description", content: "Background of the training project involvement: scope, objectives, and responsibilities." },
+      { name: "description", content: "Background of each trainee's project involvement at Cocogen Insurance: scope, objectives, and responsibilities." },
       { property: "og:title", content: "Project Background / OJT E-Portfolio" },
     ],
   }),
 });
 
-const responsibilities = [
-  "Translating Figma specifications into production React components.",
-  "Owning the design-token pipeline across web and email.",
-  "Pair-coding with senior engineers on the checkout subsystem.",
-  "Writing component documentation and Storybook entries.",
-  "Participating in weekly client critique and design QA.",
-];
+const projects: Record<string, { codename: string; body: string[] }> = {
+  abadinas: {
+    codename: "CMS REVAMP + CHAT MODULE",
+    body: [
+      "During my OJT, I worked on a CMS Revamp with CTPL API Simulation using Laravel and Next.js, along with developing a Chat Module for handling user inquiries. The project aimed to improve content management, simulate real-world API behavior, and enhance overall user interaction within the system.",
+      "I handled backend tasks such as API structuring, database adjustments, and route-controller alignment, while also contributing to frontend features like TinyMCE integration and live preview. For the Chat Module, I was involved from initial setup and integration up to implementing time-based switching between the old chat system during office hours and the new module after hours, including responsiveness fixes and UI improvements.",
+      "Overall, my contributions helped create a more scalable, user-friendly, and production-ready system, ensuring reliable API simulation, smoother content management, and improved user communication through the chat feature.",
+    ],
+  },
+  angara: {
+    codename: "DATABASE + API RELIABILITY",
+    body: [
+      "During my OJT at Cocogen Insurance, Inc., I was immersed in projects centered around database management, system reliability, and API integrations. The primary objectives of these tasks were to ensure the integrity of the company's data, maintain continuous system operations, and identify and resolve backend vulnerabilities. These objectives strictly aligned with the company's goals of providing seamless and reliable digital services.",
+      "My specific responsibilities included conducting daily system uptime monitoring, executing complex data cleansing operations, and managing bulk IT support tickets. Furthermore, I was deeply involved in backend troubleshooting, where I analyzed API documentation, tested API JSON payloads, and formulated SQL scripts to generate vital operational reports.",
+    ],
+  },
+  fabon: {
+    codename: "AUDIT SYSTEM + DOC AUTOMATION",
+    body: [
+      "During my internship, I took on the dual responsibility of technical documentation and system development. I meticulously documented two core systems in high-detail formats to ensure long-term maintainability. Simultaneously, I engineered a custom Audit and Event Monitoring System from the ground up. Leveraging my expertise in the company's existing tech stack, I was able to deploy a solution that provides real-time tracking of system actions and health events.",
+      "Perhaps my most impactful contribution was the development of a Documentation Automation Tool. By automating a manual process that previously took employees up to two weeks to complete, I reduced the turnaround time to just 1–2 days. These contributions have significantly optimized the company's operational efficiency, allowing the team to focus on core development rather than administrative overhead.",
+    ],
+  },
+  obina: { codename: TBD, body: [TBD] },
+};
 
 function ProjectPage() {
   return (
     <ZineLayout>
       <PageHeader no="03" title="Project/Background" />
 
-      <section className="grid grid-cols-12 border-brutal-b">
-        <div className="col-span-12 border-brutal-b p-4 md:col-span-7 md:border-b-0 md:border-r-2 md:p-8">
-          <div className="font-mono text-[10px] uppercase tracking-widest">PROJECT.NAME</div>
-          <h2 className="mt-2 font-display text-5xl uppercase leading-[0.9] md:text-7xl">
-            HALF—
-            <br />
-            TONE<span className="text-outline">/</span>OS
-          </h2>
-          <p className="mt-6 text-base leading-relaxed">
-            A six-month engagement to rebuild a publishing client's editorial
-            CMS as a modular design system and admin surface. The goal: replace
-            a brittle bespoke admin with a documented, opinionated component
-            library and a faster authoring experience for journalists.
-          </p>
-        </div>
-
-        <aside className="col-span-12 md:col-span-5">
-          <div className="halftone-fade border-brutal-b h-32" />
-          <table className="w-full border-collapse font-mono text-[11px] uppercase">
-            <tbody>
-              {[
-                ["CODENAME", "HALFTONE/OS"],
-                ["DURATION", "24 WEEKS"],
-                ["TEAM", "5 / 2 ENG · 2 DSN · 1 PM"],
-                ["MY ROLE", "TRAINEE FE ENGINEER"],
-                ["STATUS", "SHIPPED · v1.0"],
-                ["LOC ADDED", "~14,200"],
-              ].map(([k, v]) => (
-                <tr key={k} className="border-brutal-b">
-                  <th className="w-36 border-r-2 border-ink bg-ink p-3 text-left text-paper">{k}</th>
-                  <td className="p-3">{v}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </aside>
-      </section>
-
-      <section className="grid grid-cols-12 border-brutal-b">
-        <div className="col-span-12 border-brutal-b p-4 md:col-span-6 md:border-b-0 md:border-r-2 md:p-8">
-          <div className="font-mono text-[10px] uppercase tracking-widest">▌ OBJECTIVES</div>
-          <ol className="mt-4 space-y-3 font-mono text-sm">
-            {[
-              "REDUCE ARTICLE PUBLISH TIME BY 40%.",
-              "CONSOLIDATE 3 LEGACY ADMINS INTO ONE.",
-              "SHIP A TYPED COMPONENT LIBRARY (60+ ITEMS).",
-              "ESTABLISH A DESIGN-TOKEN BUILD PIPELINE.",
-              "ACHIEVE WCAG 2.2 AA COMPLIANCE ACROSS ADMIN.",
-            ].map((o, i) => (
-              <li key={o} className="flex gap-3 border-brutal-b pb-3 last:border-b-0">
-                <span className="font-bold">{String(i + 1).padStart(2, "0")} ▸</span>
-                <span>{o}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        <div className="col-span-12 p-4 md:col-span-6 md:p-8">
-          <div className="font-mono text-[10px] uppercase tracking-widest">▌ MY RESPONSIBILITIES</div>
-          <ul className="mt-4 space-y-3">
-            {responsibilities.map((r, i) => (
-              <li key={r} className="flex gap-3 border-brutal-b pb-3 text-sm leading-relaxed last:border-b-0">
-                <span className="font-mono text-xs font-bold">№{String(i + 1).padStart(2, "0")}</span>
-                <span>{r}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <section className="border-brutal-b">
+        {members.map((m) => {
+          const p = projects[m.key];
+          return (
+            <article key={m.key} className="grid grid-cols-12 border-brutal-b last:border-b-0">
+              <div className="col-span-12 border-brutal-b bg-ink p-4 font-mono text-[11px] uppercase tracking-widest text-paper md:col-span-3 md:border-b-0 md:border-r-2 md:p-6">
+                <div className="font-display text-5xl leading-none">№{m.no}</div>
+                <div className="mt-3 font-bold">{m.short}</div>
+                <div className="mt-1 opacity-70">{m.name}</div>
+                <div className="mt-6 opacity-60">CODENAME</div>
+                <div className="mt-1 font-display text-base normal-case">{p.codename}</div>
+              </div>
+              <div className="col-span-12 space-y-4 p-4 md:col-span-9 md:p-8">
+                <div className="font-mono text-[10px] uppercase tracking-widest">▌ INVOLVEMENT NARRATIVE</div>
+                {p.body.map((b, i) => (
+                  <p key={i} className="text-sm leading-relaxed">
+                    {b}
+                  </p>
+                ))}
+              </div>
+            </article>
+          );
+        })}
       </section>
 
       <section className="grid grid-cols-3 border-brutal-b font-mono text-[11px] uppercase">

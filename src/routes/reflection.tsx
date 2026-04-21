@@ -1,89 +1,106 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ZineLayout, PageHeader } from "@/components/zine/Layout";
+import { members, TBD } from "@/data/members";
 
 export const Route = createFileRoute("/reflection")({
   component: ReflectionPage,
   head: () => ({
     meta: [
       { title: "08 / Reflection — OJT E-Portfolio" },
-      { name: "description", content: "A summary reflection on the OJT: challenges, growth, and what comes next." },
+      { name: "description", content: "Summary reflections from each of the four interns: challenges, growth, and key takeaways." },
       { property: "og:title", content: "Reflection / OJT E-Portfolio" },
     ],
   }),
 });
+
+type Reflection = { quote?: string; body: string[]; takeaways?: { k: string; v: string }[] };
+
+const reflections: Record<string, Reflection> = {
+  abadinas: {
+    quote: "Learning comes through experience and continuous effort.",
+    body: [
+      "My OJT experience was both challenging and rewarding, as it exposed me to real-world software development beyond academic learning. One of the main challenges I faced was adapting to actual project requirements, especially in debugging issues, handling database constraints, and ensuring smooth integration between backend and frontend systems. There were moments of uncertainty when working with unfamiliar tools and complex workflows, but these experiences helped me become more independent and analytical. Successfully contributing to system improvements, such as developing modules and testing APIs, became one of my key achievements during the internship.",
+      "This experience significantly contributed to my personal and professional growth. I became more disciplined, adaptable, and responsible in handling tasks and meeting deadlines. I also realized that it is normal not to have everything figured out at the beginning, and that learning comes through experience and continuous effort. My confidence improved as I gained hands-on experience in development, problem-solving, and collaboration within a team environment.",
+      "The key takeaway from my OJT is the importance of applying theoretical knowledge to real-world situations. It helped me better understand my field of study, particularly in system development, API integration, and database management. Moving forward, I plan to continue improving my technical skills and remain open to learning new technologies. Overall, this experience prepared me to become more capable and ready for future opportunities in the IT industry.",
+    ],
+  },
+  angara: {
+    quote: "Documentation is the backbone of IT.",
+    body: [],
+    takeaways: [
+      { k: "CHALLENGES & SUCCESSES", v: "One of the biggest challenges I faced was analyzing and resolving complex API issues and database-level deadlocks. However, this turned into one of my greatest successes; by referring to proper documentation and collaborating with my supervisor, I was able to successfully isolate the issues and resolve the API findings. Successfully generating complex reports by joining up to three tables in Toad SQL was another major milestone." },
+      { k: "PERSONAL GROWTH", v: "I transitioned from performing basic trial tasks and monitoring uptime to actively troubleshooting critical backend systems and conducting complex data cleansing tasks." },
+      { k: "KEY TAKEAWAYS", v: "I learned that continuous learning and documentation are the backbones of IT. Relying on API documentation and discussing problems openly with seasoned professionals are crucial steps in navigating corporate technology environments." },
+      { k: "FUTURE APPLICATION", v: "This OJT solidified my academic understanding of database management and fueled my desire to pursue a career in data analytics. Moving forward, I plan to leverage the practical SQL expertise I gained, alongside my proactive practice with Python, Matplotlib, and machine learning, to break into the data analytics industry." },
+    ],
+  },
+  fabon: {
+    quote: "Fulfilling — one word for the whole experience.",
+    body: [
+      "There is only one word that can describe my internship experience — it was fulfilling. Throughout my OJT, I encountered various challenges that tested my technical knowledge, problem-solving abilities, and adaptability in a real-world work environment. At the same time, these challenges brought a sense of excitement as I was able to apply what I had learned in school to actual projects and tasks.",
+      "Each accomplishment, no matter how small, gave me a strong sense of achievement and motivation to continue improving. The experience was not only about developing my technical skills in areas such as development and data handling, but also about growing professionally through better communication, teamwork, and discipline.",
+      "Overall, the internship provided me with valuable learning experiences and personal growth, making it truly fulfilling.",
+    ],
+  },
+  obina: { body: [TBD] },
+};
 
 function ReflectionPage() {
   return (
     <ZineLayout>
       <PageHeader no="08" title="Reflect/End" />
 
-      <section className="grid grid-cols-12 border-brutal-b">
-        <div className="col-span-12 border-brutal-b p-4 md:col-span-8 md:border-b-0 md:border-r-2 md:p-10">
-          <div className="font-mono text-[10px] uppercase tracking-widest">¶ CLOSING STATEMENT</div>
-          <p className="mt-4 font-display text-3xl uppercase leading-[1.05] md:text-5xl">
-            "I came in expecting to learn frameworks. I left learning how to
-            <span className="text-outline"> ship</span>."
-          </p>
-
-          <div className="mt-8 space-y-4 text-base leading-relaxed">
-            <p>
-              The largest challenge was learning to defend my work in critique
-              without becoming defensive. Early reviews stung; by week eight I
-              was the one organizing them. The biggest success was watching the
-              token pipeline land — a piece of plumbing nobody asked for that
-              quietly fixed a problem the team had stopped naming.
-            </p>
-            <p>
-              I grew technically — TypeScript, React, design systems — but the
-              deeper growth was operational. I learned to write before I code,
-              to scope before I commit, to ship in slices, and to treat my
-              calendar as a product to be designed, not a place to react.
-            </p>
-            <p>
-              My field of study now reads differently to me. Algorithms and
-              HCI feel less like separate courses and more like shared
-              vocabulary for the same craft. Going forward, I plan to pursue
-              roles that sit on the seam between product engineering and
-              design systems, and to keep the practice of writing before
-              shipping at the center of my work.
-            </p>
-          </div>
-        </div>
-
-        <aside className="col-span-12 md:col-span-4">
-          <div className="border-brutal-b bg-ink p-3 font-mono text-[10px] uppercase tracking-widest text-paper">KEY TAKEAWAYS</div>
-          <ol className="divide-y-2 divide-ink">
-            {[
-              "Spec before code, every time.",
-              "Critique is a craft. Practice it.",
-              "Ship slices. Defer perfection.",
-              "Write more than you talk.",
-              "Boring tech, well-applied, wins.",
-              "Tools that feel good get maintained.",
-            ].map((t, i) => (
-              <li key={t} className="flex gap-3 px-4 py-3">
-                <span className="font-mono text-xs font-bold">№{String(i + 1).padStart(2, "0")}</span>
-                <span className="text-sm">{t}</span>
-              </li>
-            ))}
-          </ol>
-          <div className="halftone border-brutal-t h-32" />
-        </aside>
+      <section className="border-brutal-b">
+        {members.map((m) => {
+          const r = reflections[m.key];
+          return (
+            <article key={m.key} className="grid grid-cols-12 border-brutal-b last:border-b-0">
+              <div className="col-span-12 border-brutal-b p-4 md:col-span-4 md:border-b-0 md:border-r-2 md:p-8">
+                <div className="font-mono text-[10px] uppercase tracking-widest">¶ FILE.0{m.no} / SIGNED</div>
+                <div className="mt-3 font-display text-3xl uppercase leading-none">{m.short}</div>
+                <div className="mt-1 font-mono text-[10px] uppercase opacity-70">{m.name}</div>
+                {r.quote && (
+                  <p className="mt-6 font-display text-2xl uppercase leading-[1.05]">
+                    "<span className="text-outline">{r.quote}</span>"
+                  </p>
+                )}
+                <div className="halftone mt-6 h-24 border-brutal" />
+              </div>
+              <div className="col-span-12 space-y-4 p-4 md:col-span-8 md:p-8">
+                {r.body.map((p, i) => (
+                  <p key={i} className="text-sm leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+                {r.takeaways && (
+                  <ul className="divide-y-2 divide-ink border-brutal">
+                    {r.takeaways.map((t) => (
+                      <li key={t.k} className="p-4">
+                        <div className="font-mono text-[10px] uppercase tracking-widest font-bold">{t.k}</div>
+                        <p className="mt-2 text-sm leading-relaxed">{t.v}</p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </section>
 
       {/* SIGN-OFF */}
       <section className="grid grid-cols-1 border-brutal-b md:grid-cols-3">
         <div className="border-b-2 border-ink p-6 md:border-b-0 md:border-r-2">
           <div className="font-mono text-[10px] uppercase tracking-widest">SIGNED</div>
-          <div className="mt-3 font-display text-2xl uppercase">JUAN M. DELA CRUZ</div>
+          <div className="mt-3 font-display text-xl uppercase">04 INTERNS / BSIT</div>
         </div>
         <div className="border-b-2 border-ink p-6 md:border-b-0 md:border-r-2">
-          <div className="font-mono text-[10px] uppercase tracking-widest">DATE</div>
-          <div className="mt-3 font-display text-2xl uppercase">DEC · MMXXV</div>
+          <div className="font-mono text-[10px] uppercase tracking-widest">HOST</div>
+          <div className="mt-3 font-display text-xl uppercase">COCOGEN INSURANCE</div>
         </div>
         <div className="p-6">
           <div className="font-mono text-[10px] uppercase tracking-widest">STATUS</div>
-          <div className="mt-3 font-display text-2xl uppercase">END / FILE.08</div>
+          <div className="mt-3 font-display text-xl uppercase">END / FILE.08</div>
         </div>
       </section>
 

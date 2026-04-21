@@ -32,7 +32,7 @@ function Index() {
       <section className="border-brutal-b relative overflow-hidden">
         <div className="grid grid-cols-12 gap-0">
           <div className="col-span-12 border-brutal-b px-4 py-2 font-mono text-[10px] uppercase tracking-widest md:px-8">
-            ISSUE NO.001 · MMXXV · MNL · 4MB · ROLL/FILM·400·B&W
+            ISSUE NO.001 · MMXXV · COCOGEN INSURANCE · 04 INTERNS · BSIT · TIP
           </div>
 
           <div className="col-span-12 px-4 pt-6 md:col-span-8 md:px-8 md:pt-10">

@@ -1,78 +1,63 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ZineLayout, PageHeader } from "@/components/zine/Layout";
+import { members, TBD } from "@/data/members";
 
 export const Route = createFileRoute("/development")({
   component: DevelopmentPage,
   head: () => ({
     meta: [
       { title: "05 / Professional Development — OJT E-Portfolio" },
-      { name: "description", content: "Skills, knowledge, and behaviors developed during the OJT engagement." },
+      { name: "description", content: "Skills, knowledge, and professional behaviors developed by each trainee during the OJT." },
       { property: "og:title", content: "Professional Development / OJT E-Portfolio" },
     ],
   }),
 });
 
-const skills = [
-  { k: "Component Architecture", v: 92 },
-  { k: "Design Systems Thinking", v: 88 },
-  { k: "Pair Programming", v: 85 },
-  { k: "Async Communication", v: 80 },
-  { k: "Critique & Code Review", v: 78 },
-  { k: "Stakeholder Presentation", v: 70 },
-];
+const learning: Record<string, string[]> = {
+  abadinas: [
+    "Developed practical skills in full-stack development using Laravel and Next.js, including implementing CRUD operations, managing databases, integrating APIs, and applying validation techniques.",
+    "Gained experience in authentication and security using Laravel Sanctum, as well as testing system functionality through API tools like Postman.",
+    "Became more confident in handling real project requirements and translating them into working system features. Improved my ability to analyze problems and choose appropriate technical solutions, and learned to structure code for better readability and maintainability.",
+    "This experience helped me understand real-world development practices such as writing clean code, debugging issues, and aligning system features with business needs. It also improved my communication, adaptability, and teamwork.",
+    "I learned the importance of following established workflows and coding standards in a team setting, developed better time management skills by handling multiple tasks and deadlines, and gained awareness of how collaboration and feedback contribute to improving system quality.",
+  ],
+  angara: [
+    "My OJT experience drastically accelerated my professional growth by exposing me to a live corporate IT environment. I developed technical hard skills, such as understanding SQL best practices, analyzing complex API documentation, and applying data maps and hashKey validations.",
+    "Beyond technical skills, I learned essential workplace behaviors under the mentorship of my supervisor, Mr. Cris Armand Ray G. Viaje. By actively discussing my technical findings with him, I learned how to approach complex problem-solving in a structured, industry-standard manner.",
+    "I broadened my professional knowledge by attending company seminars like the Basic Non-Life Primer, E-mail Correspondence, and Resume Writing & Interview Preparation, which taught me the vital corporate standards of communication and industry practices.",
+  ],
+  fabon: [
+    "During my internship I developed my skills in making detailed documentation, and full stack development using the framework they are using. This enhanced my skills about databases, UI/UX, data handling, and more.",
+    "I become more committed in making systems that can really help a lot of people. I also enhanced my debugging skills without relying too much on Artificial Intelligence. Lastly, I learned how to structure my code to become more scalable and functional.",
+    "This experience helped me realize that real-world projects are far more different than school/personal projects. In the real world it will tire you down, but you will need to come back up and try again. The experience taught me how to handle pressure and work collaboratively with a team. It also taught me how to work solely on my own without the guidance of my supervisor.",
+    "Overall, I gained a lot of knowledge in this program that can help me land a job in the future.",
+  ],
+  obina: [TBD],
+};
 
 function DevelopmentPage() {
   return (
     <ZineLayout>
       <PageHeader no="05" title="Develop/ment" />
 
-      <section className="grid grid-cols-12 border-brutal-b">
-        <div className="col-span-12 border-brutal-b p-4 md:col-span-7 md:border-b-0 md:border-r-2 md:p-8">
-          <div className="font-mono text-[10px] uppercase tracking-widest">▌ SUMMARY</div>
-          <p className="mt-4 text-base leading-relaxed">
-            Six months in a working studio reframed how I think about software.
-            Coursework taught me how systems work in isolation; the OJT taught
-            me how systems live — under deadline, under critique, and under the
-            constraints of real users. The biggest gain wasn't a single
-            framework; it was learning to ship in small, opinionated steps.
-          </p>
-          <p className="mt-4 text-base leading-relaxed">
-            I left the engagement with sharper instincts for boundary-drawing
-            in components, a real practice of writing before coding, and a
-            comfort with critique that I did not have entering. I learned that
-            engineering quality is mostly the discipline of small, repeated
-            decisions made well.
-          </p>
-        </div>
-
-        <div className="col-span-12 md:col-span-5">
-          <div className="border-brutal-b bg-ink p-4 font-mono text-[11px] uppercase tracking-widest text-paper">SKILL TELEMETRY</div>
-          <ul className="divide-y-2 divide-ink">
-            {skills.map((s) => (
-              <li key={s.k} className="px-4 py-3">
-                <div className="flex items-baseline justify-between font-mono text-[11px] uppercase">
-                  <span>{s.k}</span>
-                  <span className="font-bold">{s.v}/100</span>
-                </div>
-                <div className="mt-2 h-3 border-brutal bg-paper">
-                  <div className="h-full bg-ink" style={{ width: `${s.v}%` }} />
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="grid grid-cols-1 border-brutal-b md:grid-cols-3">
-        {[
-          { k: "WORKPLACE", v: "Studios run on rhythm and trust. Async writing replaces 80% of meetings. Critique is a craft, not a confrontation." },
-          { k: "INDUSTRY", v: "Quality compounds. Tooling that 'feels good' to use is shipped faster and maintained longer. Boring tech wins." },
-          { k: "SELF", v: "I work best when I write specs first, sketch second, code third. Ship small, iterate visibly, defend the work." },
-        ].map((b) => (
-          <div key={b.k} className="border-b-2 border-ink p-5 last:border-b-0 md:border-b-0 md:border-r-2 md:last:border-r-0">
-            <div className="font-mono text-[10px] uppercase tracking-widest">{b.k} / NOTES</div>
-            <p className="mt-3 text-sm leading-relaxed">{b.v}</p>
-          </div>
+      <section className="border-brutal-b">
+        {members.map((m, idx) => (
+          <article key={m.key} className="grid grid-cols-12 border-brutal-b last:border-b-0">
+            <div className={`col-span-12 border-brutal-b p-4 md:col-span-4 md:border-b-0 md:border-r-2 md:p-6 ${idx % 2 === 0 ? "" : "bg-ink text-paper"}`}>
+              <div className="font-mono text-[10px] uppercase tracking-widest opacity-70">FILE.0{m.no}</div>
+              <div className="mt-2 font-display text-4xl uppercase leading-none">{m.short}</div>
+              <div className="mt-2 font-mono text-[10px] uppercase opacity-70">{m.name}</div>
+              <div className="mt-4 font-mono text-[10px] uppercase tracking-widest">▌ LEARNING & DEVELOPMENT</div>
+            </div>
+            <div className="col-span-12 space-y-4 p-4 md:col-span-8 md:p-8">
+              {learning[m.key].map((l, i) => (
+                <p key={i} className="text-sm leading-relaxed">
+                  <span className="font-mono text-xs font-bold">№{String(i + 1).padStart(2, "0")} ▸</span>{" "}
+                  {l}
+                </p>
+              ))}
+            </div>
+          </article>
         ))}
       </section>
 

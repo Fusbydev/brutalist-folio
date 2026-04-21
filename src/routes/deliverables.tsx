@@ -1,25 +1,48 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ZineLayout, PageHeader } from "@/components/zine/Layout";
+import { members, TBD } from "@/data/members";
 
 export const Route = createFileRoute("/deliverables")({
   component: DeliverablesPage,
   head: () => ({
     meta: [
       { title: "04 / Deliverables — OJT E-Portfolio" },
-      { name: "description", content: "Project deliverables: artifacts, documents, and impact summaries." },
+      { name: "description", content: "Project deliverables from each of the four interns: artifacts, systems, and impact." },
       { property: "og:title", content: "Deliverables / OJT E-Portfolio" },
     ],
   }),
 });
 
-const items = [
-  { no: "01", title: "Component Library v1", type: "REACT/TS", size: "184 KB", impact: "Reused across 3 product surfaces. Reduced new-page build time by ~52%.", link: "#" },
-  { no: "02", title: "Design Token Pipeline", type: "JSON · CSS", size: "38 KB", impact: "Single source of truth for color, type, spacing. Synced to Figma.", link: "#" },
-  { no: "03", title: "Editorial Admin — Phase 1", type: "WEB APP", size: "—", impact: "Replaced legacy admin for 22 active journalists. Reduced publish time by 41%.", link: "#" },
-  { no: "04", title: "Storybook Documentation", type: "DOCS", size: "62 PG", impact: "Onboards new engineers in <1 day per internal survey.", link: "#" },
-  { no: "05", title: "Accessibility Audit Report", type: "PDF", size: "1.2 MB", impact: "Closed 38 of 41 critical AA violations.", link: "#" },
-  { no: "06", title: "End-of-Term Presentation", type: "PDF · DECK", size: "9.4 MB", impact: "Delivered to studio + client stakeholders. Approved for v1.1 scope.", link: "#" },
-];
+const deliverables: Record<string, string[]> = {
+  abadinas: [
+    "A functional CTPL API simulation replicating real LTO API behavior, including tested success, failure, and edge case scenarios via Postman.",
+    "A documented Postman collection containing test cases and request payloads for API validation.",
+    "Enhanced CMS modules (Pages, News, Blogs, Products) with improved structure, consistency, and content handling.",
+    "A live preview feature integrated with TinyMCE for real-time content editing.",
+    "A fully integrated Chat Module with time-based switching between the legacy and custom chat systems.",
+    "A responsive and optimized chat interface for both desktop and mobile devices.",
+    "Refactored and organized API structure following MVC best practices.",
+    "Developed and enhanced core system management modules including User, Branch, Promo, and Shop Management, implementing full CRUD functionalities, structured data handling, and robust input validation.",
+    "Validated and user-friendly form components with proper input handling and error feedback.",
+    "A secure authentication system using Laravel Sanctum with login, logout, and protected routes.",
+  ],
+  angara: [
+    "SQL Reports and Scripts — Generated comprehensive reports by joining multiple tables (up to 3 tables) using Toad SQL. Delivered modified SQL scripts for renewal validation and enhanced existing scripts to detect due date inconsistencies.",
+    "Data Cleansing and Validation Files — Produced validated Excel files by matching user names across separate source files using formulas like VLOOKUP. Documented designated values and validated company portal features in Excel.",
+    "API Diagnostic Documentation — Delivered formal documentation of findings from API post requests, including isolated critical backend timeouts and database-level deadlocks based on distinct HTTP status codes (400, 500, 502).",
+    "Support Ticket Logs — Maintained and submitted ticket monitoring reports after resolving bulk IT support tickets.",
+    "Task Reports — Created Pivot charts in Excel to effectively summarize weekly task reports.",
+    "Impact: directly supported operational efficiency by resolving backend API deadlocks, clearing bulk support tickets to assist end-users, and ensuring data accuracy across the company's systems.",
+  ],
+  fabon: [
+    "A detailed documentation of the system, understandable by end-users and other stakeholders.",
+    "Enhanced the user interface of a system to make it more user friendly and visually appealing.",
+    "Added more audit logs in the automation to better track the events, errors, and other actions within the system.",
+    "Developed a system where they can track the actions, events, errors, etc. of a system. This involved filtering the data, adding CRUD principles, and authentication to better secure the system.",
+    "Authored detailed instructions for AI to produce detailed and human-like documentation. This involved creating the template and instructing the AI on what to do and what to use.",
+  ],
+  obina: [TBD],
+};
 
 function DeliverablesPage() {
   return (
@@ -27,43 +50,33 @@ function DeliverablesPage() {
       <PageHeader no="04" title="Deliver/ables" />
 
       <section className="border-brutal-b">
-        <div className="grid grid-cols-12 border-brutal-b bg-ink font-mono text-[10px] uppercase tracking-widest text-paper">
-          <div className="col-span-1 border-r-2 border-paper p-3">№</div>
-          <div className="col-span-5 border-r-2 border-paper p-3">ARTIFACT</div>
-          <div className="col-span-2 border-r-2 border-paper p-3">TYPE</div>
-          <div className="col-span-2 border-r-2 border-paper p-3 hidden md:block">SIZE</div>
-          <div className="col-span-2 p-3 text-right">LINK</div>
-        </div>
-
-        {items.map((it) => (
-          <article key={it.no} className="grid grid-cols-12 border-brutal-b last:border-b-0">
-            <div className="col-span-1 border-r-2 border-ink p-3 font-mono text-sm font-bold">{it.no}</div>
-            <div className="col-span-11 border-b-2 border-ink p-3 md:col-span-5 md:border-b-0 md:border-r-2">
-              <div className="font-display text-2xl uppercase leading-tight md:text-3xl">{it.title}</div>
-              <p className="mt-1 text-sm leading-relaxed">{it.impact}</p>
+        {members.map((m) => (
+          <article key={m.key} className="grid grid-cols-12 border-brutal-b last:border-b-0">
+            <div className="col-span-12 border-brutal-b bg-ink p-4 text-paper md:col-span-3 md:border-b-0 md:border-r-2 md:p-6">
+              <div className="font-display text-5xl leading-none">№{m.no}</div>
+              <div className="mt-3 font-mono text-[11px] uppercase tracking-widest font-bold">{m.short}</div>
+              <div className="mt-1 font-mono text-[10px] uppercase opacity-70">{m.name}</div>
+              <div className="mt-4 inline-block border-2 border-paper px-2 py-1 font-mono text-[10px] uppercase">
+                {deliverables[m.key].length} ITEMS
+              </div>
+              {/* Showcase placeholder */}
+              <div className="mt-6 border-2 border-paper p-3 font-mono text-[10px] uppercase opacity-90">
+                📁 SHOWCASE SLOT — UPLOAD IMAGES / DOCS HERE
+              </div>
             </div>
-            <div className="col-span-6 border-r-2 border-ink p-3 font-mono text-xs uppercase md:col-span-2">{it.type}</div>
-            <div className="col-span-3 border-r-2 border-ink p-3 font-mono text-xs uppercase md:col-span-2">{it.size}</div>
-            <div className="col-span-3 p-3 text-right md:col-span-2">
-              <a href={it.link} className="inline-block border-brutal bg-paper px-2 py-1 font-mono text-[11px] uppercase shadow-brutal-sm transition-transform hover:translate-x-[-2px] hover:translate-y-[-2px]">
-                ↗ OPEN
-              </a>
+            <div className="col-span-12 md:col-span-9">
+              <ol className="divide-y-2 divide-ink">
+                {deliverables[m.key].map((d, i) => (
+                  <li key={i} className="grid grid-cols-12 gap-3 p-4 md:p-5">
+                    <span className="col-span-2 font-mono text-xs font-bold md:col-span-1">
+                      №{String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="col-span-10 text-sm leading-relaxed md:col-span-11">{d}</span>
+                  </li>
+                ))}
+              </ol>
             </div>
           </article>
-        ))}
-      </section>
-
-      <section className="grid grid-cols-2 border-brutal-b md:grid-cols-4">
-        {[
-          ["LOC SHIPPED", "14,200"],
-          ["COMPONENTS", "62"],
-          ["PR REVIEWS", "118"],
-          ["IMPACT", "41% ↓"],
-        ].map(([k, v]) => (
-          <div key={k} className="border-b-2 border-r-2 border-ink p-4 last:border-r-0 md:border-b-0 md:p-6">
-            <div className="font-mono text-[10px] uppercase tracking-widest">{k}</div>
-            <div className="mt-2 font-display text-3xl md:text-5xl">{v}</div>
-          </div>
         ))}
       </section>
 

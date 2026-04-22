@@ -2,6 +2,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ZineLayout, PageHeader } from "@/components/zine/Layout";
 import { members, TBD } from "@/data/members";
 
+import milaImg from "@/lib/assets/milajpg.jpg";
+import lloydImg from "@/lib/assets/lloyd.jpg";
+import kirkImg from "@/lib/assets/kirk.jpg";
+
+const memberImages: Record<string, string> = {
+  abadinas: milaImg,
+  angara: lloydImg,
+  fabon: kirkImg,
+  obina: "", // Placeholder or missing
+};
+
 export const Route = createFileRoute("/profile")({
   component: ProfilePage,
   head: () => ({
@@ -46,16 +57,24 @@ function ProfilePage() {
           >
             {/* Portrait slot */}
             <div className="relative aspect-[4/3] overflow-hidden border-brutal-b bg-newsprint">
-              <div className="halftone-dense absolute inset-0 photocopy" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="border-brutal bg-paper px-3 py-2 font-mono text-[10px] uppercase tracking-widest">
-                  ▣ PHOTO SLOT — {m.short}
+              {memberImages[m.key] ? (
+                <img
+                  src={memberImages[m.key]}
+                  alt={m.name}
+                  className="h-full w-full object-cover grayscale contrast-125"
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="border-brutal bg-paper px-3 py-2 font-mono text-[10px] uppercase tracking-widest">
+                    ▣ PHOTO SLOT — {m.short}
+                  </div>
                 </div>
-              </div>
+              )}
+              <div className="halftone-dense absolute inset-0 photocopy pointer-events-none" />
               <div className="absolute right-3 top-3 border-brutal bg-paper px-2 py-1 font-mono text-[10px] uppercase">
                 ID — 2025/00{m.no}
               </div>
-              <div className="absolute bottom-3 left-3 font-mono text-[10px] uppercase tracking-widest">
+              <div className="absolute bottom-3 left-3 font-mono text-[10px] bg-paper/80 px-1 uppercase tracking-widest">
                 FIG.0{m.no} — IDENTIFICATION PORTRAIT
               </div>
             </div>

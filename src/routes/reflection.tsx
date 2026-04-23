@@ -42,7 +42,16 @@ const reflections: Record<string, Reflection> = {
       "Overall, the internship provided me with valuable learning experiences and personal growth, making it truly fulfilling.",
     ],
   },
-  obina: { body: [TBD] },
+  obina: {
+  quote: "Great design is not just how it looks, but how it works.",
+  body: [],
+  takeaways: [
+    { k: "CHALLENGES & SUCCESSES", v: "One of the biggest challenges I faced was adapting to evolving requirements, fast-paced iterations, and balancing design decisions with technical constraints and business goals. These challenges became opportunities for growth, as I successfully contributed to initiatives like the 2026 System Revamp by improving interfaces, optimizing user flows, and enhancing overall usability." },
+    { k: "PERSONAL GROWTH", v: "I grew from applying basic UI/UX concepts to confidently designing real-world systems, participating in cross-functional meetings, and making design decisions that deliver practical and strategic value." },
+    { k: "KEY TAKEAWAYS", v: "I learned that effective design goes beyond aesthetics—it must be functional, user-centered, and aligned with business objectives while remaining adaptable to change." },
+    { k: "FUTURE APPLICATION", v: "This OJT strengthened my passion for UI/UX and system design. Moving forward, I will continue refining my skills and apply what I’ve learned to create impactful, user-centered digital experiences in my professional career." },
+  ],
+},
 };
 
 function ReflectionPage() {

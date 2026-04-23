@@ -5,12 +5,13 @@ import { members, TBD } from "@/data/members";
 import milaImg from "@/lib/assets/milajpg.jpg";
 import lloydImg from "@/lib/assets/lloyd.jpg";
 import kirkImg from "@/lib/assets/kirk.jpg";
+import obinaImg from "@/lib/assets/holy.jpg";
 
 const memberImages: Record<string, string> = {
   abadinas: milaImg,
   angara: lloydImg,
   fabon: kirkImg,
-  obina: "", // Placeholder or missing
+  obina: obinaImg, // Placeholder or missing
 };
 
 export const Route = createFileRoute("/profile")({
@@ -41,7 +42,12 @@ const bios: Record<string, string[]> = {
     "During my internship, I gained extensive experience building systems and automations. This hands-on environment significantly sharpened my skills in debugging, testing, and deployment. Beyond technical growth, I learned the vital importance of writing clean, maintainable code and collaborating effectively within a team. I am now ready to face real-world challenges.",
     "I am driven by a deep curiosity to understand how technology works and a commitment to building reliable, functional systems that improve the digital experience for everyone.",
   ],
-  obina: [TBD],
+  obina: [
+    "I am a fourth-year Bachelor of Science in Information Technology student driven by a passion for building systems that are not only functional but also intuitive and user-centered. I specialize in both frontend and backend development, with hands-on experience in UI/UX design allowing me to create complete, scalable solutions that balance performance with user experience.",
+    "During my internship, I was actively involved in UI/UX design, where I contributed to improving system interfaces, user flows, and overall usability. I worked on designing and refining layouts, ensuring that applications are visually clear, accessible, and aligned with user needs. In addition, I gained experience in system testing, debugging, and documentation, strengthening my ability to deliver reliable and efficient solutions in a professional environment.",
+    "My strength lies in combining technical skills with design thinking. I do not only focus on how a system works, but also on how users interact with it. This approach allows me to develop applications that are both effective and engaging. I am also capable of working collaboratively, communicating ideas clearly, and taking initiative when solving complex problems.",
+    "As I continue to grow in the field of technology, I aim to become a well-rounded system developer with strong expertise in backend engineering and user experience design. My goal is to build impactful digital solutions that improve how people interact with technology and deliver meaningful results..",
+  ],
 };
 
 function ProfilePage() {

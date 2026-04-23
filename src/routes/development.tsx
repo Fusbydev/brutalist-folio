@@ -32,7 +32,11 @@ const learning: Record<string, string[]> = {
     "This experience helped me realize that real-world projects are far more different than school/personal projects. In the real world it will tire you down, but you will need to come back up and try again. The experience taught me how to handle pressure and work collaboratively with a team. It also taught me how to work solely on my own without the guidance of my supervisor.",
     "Overall, I gained a lot of knowledge in this program that can help me land a job in the future.",
   ],
-  obina: [TBD],
+  obina: [
+    "During my OJT at Cocogen Insurance, Inc., I enhanced my UI/UX design and prototyping skills by creating responsive, user-centered designs across web, mobile, and tablet platforms. I learned to translate complex requirements into intuitive solutions while aligning with business goals and branding standards.",
+    "I also developed strong professional discipline and adaptability by working through real-world challenges, constant feedback, and tight deadlines. Collaborating with developers and marketing teams helped me improve my communication skills and confidently present and justify my design decisions.",
+    "Overall, this experience taught me to take ownership of my work and think beyond just completing tasks. It strengthened my problem-solving abilities and prepared me to deliver meaningful, high-quality solutions in real-world environments.",
+  ],
 };
 
 function DevelopmentPage() {

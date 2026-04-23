@@ -38,7 +38,16 @@ const stacks: Record<string, Bucket[]> = {
     { k: "COMMUNICATION", items: ["Verbal & written", "Team collaboration"] },
     { k: "EMAIL ETIQUETTE", items: ["Formal tone", "Clear structure"] },
   ],
-  obina: [{ k: "PENDING", items: [TBD] }],
+  obina: [
+    { k: "UI/UX DESIGN & PROTOTYPING", items: ["Responsive web, mobile, tablet design", "Interactive prototypes", "User-centered design principles"] },
+    { k: "DESIGN SYSTEMS & BRANDING", items: ["Consistent UI standards", "Cocogen branding alignment", "Cross-platform visual consistency"] },
+    { k: "USER EXPERIENCE OPTIMIZATION", items: ["Improved user flows", "Layout enhancements", "Usability improvements based on feedback"] },
+    { k: "CROSS-PLATFORM DESIGN", items: ["Scalable interfaces", "Responsive layouts", "Accessibility-focused design"] },
+    { k: "COLLABORATION & AGILE WORKFLOW", items: ["Cross-functional teamwork", "Developer & marketing coordination", "Stakeholder alignment"] },
+    { k: "SYSTEM TESTING & VALIDATION", items: ["UI validation", "Design implementation checking", "Functionality assurance"] },
+    { k: "TOOLS USED", items: ["Figma", "Adobe tools", "Collaboration tools"] },
+    { k: "SKILLS DEVELOPED", items: ["Design thinking", "Communication", "Adaptability", "Attention to detail"] },
+],
 };
 
 function ToolsPage() {

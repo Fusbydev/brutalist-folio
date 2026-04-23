@@ -29,7 +29,9 @@ const solutions: Record<string, string[]> = {
     "Attendance and time management are monitored through timekeeping systems to ensure punctuality and accountability. The organization also conducts training programs and seminars to reinforce discipline, work ethics, and continuous professional development.",
     "Regular performance evaluations are carried out to assess employee performance, provide feedback, and implement corrective actions when necessary. In addition, supervisors actively monitor employees and provide immediate guidance to address issues. Open communication channels are encouraged to promote transparency, allowing employees to raise concerns and resolve conflicts in a professional manner.",
   ],
-  obina: [TBD],
+  obina: [
+    "My academic background in Information Technology, particularly in UI/UX and system design, enabled me to contribute solutions focused on improving user experience and system usability within the company. I applied design principles such as consistency, hierarchy, and user-centered design in the 2026 System Revamp, where I redesigned interfaces, optimized user flows, and developed responsive prototypes across web, mobile, and tablet platforms. I also contributed to enhancing key features such as onboarding processes (Create Account and Partner Sign-up), motor insurance modules, and policyholder systems to ensure smoother interaction and accessibility. Through collaboration with developers, marketing, and stakeholders, I aligned design solutions with business goals and branding standards. These solutions were integrated into ongoing system development, helping improve design consistency, user engagement, and overall digital experience across Cocogen’s platforms."
+  ],
 };
 
 function SolutionsPage() {

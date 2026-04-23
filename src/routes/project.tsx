@@ -36,7 +36,9 @@ const projects: Record<string, { codename: string; body: string[] }> = {
       "Perhaps my most impactful contribution was the development of a Documentation Automation Tool. By automating a manual process that previously took employees up to two weeks to complete, I reduced the turnaround time to just 1–2 days. These contributions have significantly optimized the company's operational efficiency, allowing the team to focus on core development rather than administrative overhead.",
     ],
   },
-  obina: { codename: TBD, body: [TBD] },
+  obina: { codename: "UI/UX PROTOTYPE FOR WEB, MOBILE APPLICATIONS", body: ["Designed and refined responsive UI/UX prototypes across web, mobile, and tablet platforms, contributing to key systems such as Trip Sagip, AEP 2025, ZAP, E-PartnerHub, and Motor Insurance features while aligning with Cocogen branding and usability standards. Collaborated with cross-functional teams and supported testing to ensure consistent, user-centered designs that enhance workflows, accessibility, and overall user experience.",
+    "Delivered high-quality, user-centered designs and prototypes across multiple platforms, helping improve system usability, consistency, and alignment with Cocogen’s digital strategy and branding."
+  ] },
 };
 
 function ProjectPage() {

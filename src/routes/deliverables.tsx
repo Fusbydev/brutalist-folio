@@ -41,7 +41,17 @@ const deliverables: Record<string, string[]> = {
     "Developed a system where they can track the actions, events, errors, etc. of a system. This involved filtering the data, adding CRUD principles, and authentication to better secure the system.",
     "Authored detailed instructions for AI to produce detailed and human-like documentation. This involved creating the template and instructing the AI on what to do and what to use.",
   ],
-  obina: [TBD],
+  obina: [
+    "Designed UI/UX prototypes for web, mobile, and tablet platforms, ensuring responsive and consistent user experience across devices.",
+    "Created UI/UX designs and iterations for key systems including Trip Sagip, 2025 AEP, and ZAP (mobile and tablet platforms)",
+    "Designed and improved 2026 system components such as footer, header, and modal interfaces aligned with modern UI standards",
+    "Developed and refined UI/UX for E-PartnerHub (DTP) and partner onboarding (sign-up as partner) workflows",
+    "Created design iterations for Motor Insurance features, including checklist modals and improved user flows",
+    "Designed Mobile One Plan and Multiple Plan interfaces with clear structure and intuitive navigation",
+    "Enhanced Create Account flows and authentication screens for better usability and conversion",
+    "Updated web and mobile screens based on the latest Cocogen branding and policyholder experience standards",
+    "Contributed to UI/UX improvements for policyholder modules (web and mobile) to ensure consistency and accessibility",
+  ],
 };
 
 function DeliverablesPage() {
